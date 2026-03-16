@@ -1,0 +1,27 @@
+---
+description: >
+  GitHub API pytest automation overview, environment expectations, and global
+  coding conventions that every change should respect.
+alwaysApply: true
+---
+
+# GitHub API Automation Overview
+
+- This repo drives GitHub REST API tests with `pytest` + `requests`.
+- Python 3.12.x is required (`pyproject.toml: requires-python = ">=3.12,<3.13"`).
+- Secrets live in `config/config.json`; never commit credentials or tokens.
+- Use type hints and descriptive docstrings like existing modules (see `utils/api/github_api.py`).
+- Prefer small, single-responsibility helpers and keep HTTP logic inside `utils/http/client.py`.
+
+## Patterns To Reuse
+1. **API-wrapper-first** — Reach for `GitHubAPI` facade methods (`api.repos.*`, `api.users.*`, etc.) before hand-rolling HTTP `requests`. Reserve raw `http_client.get(...)` for explicit HTTP-shape validation.
+2. **Constants over hardcoded strings** — Import endpoint paths, error codes, and HTTP status codes from `data/constants.py` instead of using hardcoded strings.
+3. **Rate limiting** — ALL API calls are automatically rate-limited via fixtures. Use `rate_limiter` for manual control. Never create unwrapped HTTP clients.
+4. **Stateful calls** — Wrap create/update/delete flows with `api.*` methods before assertions.
+5. **Database verification** — Use `utils/database/` helpers to record and verify test run data.
+
+## Structure & Documentation
+- Mirror the folder map from `README.md` when adding modules; helpers belong in `utils/`, tests under scoped subfolders.
+- **Universal utilities** (database, HTTP, testing) go directly under `utils/`. **Endpoint-specific helpers** go in subdirectories.
+- **All docstrings must follow Google style formatting** across the entire codebase.
+- **Tests use rule-of-three docstrings**: one-line summary, then **Setup**, **Action**, and **Assertions**.

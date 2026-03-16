@@ -1,0 +1,11 @@
+{
+    "github_token": "",
+    "test_org": "github",
+    "test_repo": "octocat/Hello-World",
+    "test_user": "octocat",
+    "db_path": "data/test_results.db",
+    "log_level": "INFO",
+    "rate_limit_buffer": 100,
+    "retry_attempts": 3,
+    "retry_backoff_factor": 2
+}

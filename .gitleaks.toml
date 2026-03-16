@@ -1,0 +1,10 @@
+title = "Gitleaks config for GitHub API Automation"
+
+[allowlist]
+  description = "Global allowlist"
+  paths = [
+    '''.gitleaks.toml''',
+    '''\.env\.example''',
+    '''reports/.*''',
+    '''htmlcov/.*''',
+  ]

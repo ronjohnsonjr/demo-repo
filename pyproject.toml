@@ -1,0 +1,98 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "github-api-automation-pytest"
+version = "1.0.0"
+description = "GitHub REST API test automation framework using pytest"
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "test-repos: Repository endpoint tests",
+    "test-users: User endpoint tests",
+    "test-orgs: Organization endpoint tests",
+    "test-search: Search endpoint tests",
+    "test-issues: Issue endpoint tests",
+    "test-gists: Gist endpoint tests",
+    "test-actions: Actions endpoint tests",
+    "smoke: Quick smoke tests for CI",
+    "slow: Tests that take longer to run",
+]
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+    "--junitxml=reports/junit.xml",
+    "--html=reports/report.html",
+    "--self-contained-html",
+]
+log_cli = true
+log_cli_level = "INFO"
+log_file = "logs/test_run.log"
+log_file_level = "DEBUG"
+
+[tool.coverage.run]
+source = ["utils", "data"]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/conftest.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 70
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.",
+    "raise NotImplementedError",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "S",    # flake8-bandit (security)
+    "A",    # flake8-builtins
+    "C4",   # flake8-comprehensions
+    "DTZ",  # flake8-datetimez
+    "T20",  # flake8-print
+    "SIM",  # flake8-simplify
+    "LOG",  # flake8-logging
+]
+ignore = [
+    "S101",  # allow assert in tests
+    "S105",  # allow hardcoded passwords in test data
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "S105", "S106"]
+"scripts/**/*.py" = ["T20"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["utils", "data", "config"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+check_untyped_defs = true
+ignore_missing_imports = true

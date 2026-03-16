@@ -1,0 +1,24 @@
+---
+description: >
+  Test data management patterns, well-known fixtures, and data lifecycle.
+alwaysApply: false
+---
+
+# Test Data Management
+
+## Well-Known Test Fixtures
+The framework uses stable, well-known GitHub entities for testing:
+- **User**: `octocat` (id: 583231) — GitHub's mascot account
+- **Repo**: `octocat/Hello-World` — Classic demo repository
+- **Org**: `github` (id: 9919) — GitHub's own organization
+- **Actions**: `actions/checkout` — Popular Actions repo with workflows
+
+## Data Constants
+- All test data is defined in `data/<domain>_constants.py` modules.
+- Expected values are dictionaries for assertion comparison.
+- Required field lists are used for schema validation.
+
+## Guidelines
+- Never modify external GitHub resources in tests (read-only).
+- Use parameterized tests for testing multiple entities.
+- Keep test data stable — choose entities unlikely to change.

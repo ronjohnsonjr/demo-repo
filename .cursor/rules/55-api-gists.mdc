@@ -1,0 +1,15 @@
+---
+description: >
+  Gist endpoint patterns and conventions for /gists/* tests.
+alwaysApply: false
+---
+
+# Gist API Endpoints
+
+## Endpoints Covered
+- `GET /gists/public` — List public gists
+- `GET /gists/{gist_id}` — Get single gist
+
+## Test Data
+- Uses dynamically fetched gist IDs from the public listing.
+- Constants in `data/gists_constants.py`

@@ -1,0 +1,22 @@
+---
+description: >
+  Naming conventions and organization for constants across data/ modules.
+alwaysApply: true
+---
+
+# Constants Conventions
+
+## Structure
+- `data/constants.py` — Global constants (base URL, status codes, endpoint templates, rate limits)
+- `data/<domain>_constants.py` — Domain-specific constants (test data, expected values, required fields)
+
+## Naming Patterns
+- HTTP status codes: `HTTP_<code>_<NAME>` (e.g., `HTTP_200_OK`)
+- Endpoint templates: `ENDPOINT_<DOMAIN>_<ACTION>` (e.g., `ENDPOINT_REPOS`)
+- Required fields: `<ENTITY>_REQUIRED_FIELDS` (e.g., `REPO_REQUIRED_FIELDS`)
+- Test data: `TEST_<ENTITY>_<PROPERTY>` (e.g., `TEST_USERNAME`)
+- Expected values: `<ENTITY>_EXPECTED` (e.g., `OCTOCAT_EXPECTED`)
+
+## Rules
+- Never hardcode URLs, status codes, or field names in test files.
+- Always import from the appropriate `data/` module.

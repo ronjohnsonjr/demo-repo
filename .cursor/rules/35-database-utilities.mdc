@@ -1,0 +1,30 @@
+---
+description: >
+  Database utility patterns for test result tracking and regression snapshots.
+alwaysApply: false
+---
+
+# Database Utilities
+
+## Overview
+`utils/database/db.py` provides a SQLite-backed test result tracker:
+- `TestRun` model — Records of individual test executions
+- `APISnapshot` model — Response snapshots for regression comparison
+- `TestResultDB` facade — Primary interface for database operations
+
+## Usage
+```python
+from utils.database.db import TestResultDB
+
+db = TestResultDB()
+db.record_test_run(
+    test_name="test_get_repo",
+    endpoint="/repos/octocat/Hello-World",
+    status_code=200,
+)
+```
+
+## Guidelines
+- Use `TestResultDB` for persistent test data tracking.
+- Snapshots enable regression testing via response hash comparison.
+- The database file is gitignored (`data/test_results.db`).

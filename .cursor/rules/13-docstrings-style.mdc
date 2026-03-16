@@ -1,0 +1,45 @@
+---
+description: >
+  Google-style docstring conventions for all modules, classes, and functions.
+alwaysApply: false
+---
+
+# Docstring Style Guide
+
+## Format
+All docstrings use **Google style** formatting.
+
+## Module Docstrings
+```python
+"""Brief description of the module's purpose.
+
+Longer explanation if needed, covering key classes and usage patterns.
+"""
+```
+
+## Function/Method Docstrings
+```python
+def get_user(self, username: str) -> dict[str, Any]:
+    """Retrieve a user profile by username.
+
+    Args:
+        username: The GitHub username to look up.
+
+    Returns:
+        A dictionary containing the user's profile data.
+
+    Raises:
+        requests.HTTPError: If the API returns a non-2xx status.
+    """
+```
+
+## Test Docstrings (Rule of Three)
+```python
+def test_get_user_returns_profile(self, api: GitHubAPI):
+    """Verify fetching a known user returns their profile.
+
+    Setup: Use the well-known octocat test user.
+    Action: Call api.users.get_user().
+    Assertions: Verify login matches expected username.
+    """
+```

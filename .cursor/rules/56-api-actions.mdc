@@ -1,0 +1,15 @@
+---
+description: >
+  GitHub Actions endpoint patterns and conventions for /actions/* tests.
+alwaysApply: false
+---
+
+# GitHub Actions API Endpoints
+
+## Endpoints Covered
+- `GET /repos/{owner}/{repo}/actions/workflows` — List workflows
+- `GET /repos/{owner}/{repo}/actions/runs` — List workflow runs
+
+## Test Data
+- Primary fixture: `actions/checkout` (popular repo with CI workflows)
+- Constants in `data/actions_constants.py`

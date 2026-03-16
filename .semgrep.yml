@@ -1,0 +1,23 @@
+rules:
+  - id: no-hardcoded-tokens
+    patterns:
+      - pattern: |
+          $X = "ghp_..."
+      - pattern: |
+          $X = "github_pat_..."
+    message: "Do not hardcode GitHub tokens. Use environment variables or config/config.json."
+    languages: [python]
+    severity: ERROR
+
+  - id: no-verify-false
+    pattern: requests.$METHOD(..., verify=False, ...)
+    message: "Do not disable SSL verification. Remove verify=False."
+    languages: [python]
+    severity: WARNING
+
+  - id: use-constants-for-endpoints
+    pattern: |
+      requests.$METHOD("https://api.github.com/...", ...)
+    message: "Use endpoint constants from data/constants.py instead of hardcoded URLs."
+    languages: [python]
+    severity: WARNING

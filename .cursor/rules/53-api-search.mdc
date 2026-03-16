@@ -1,0 +1,21 @@
+---
+description: >
+  Search endpoint patterns and conventions for /search/* tests.
+alwaysApply: false
+---
+
+# Search API Endpoints
+
+## Endpoints Covered
+- `GET /search/repositories` — Search repos
+- `GET /search/users` — Search users
+- `GET /search/code` — Search code
+- `GET /search/issues` — Search issues
+
+## Rate Limiting
+- Search API has a separate, lower rate limit: 30 requests/minute.
+- Use small `per_page` values in search tests.
+
+## Test Data
+- Search queries in `data/search_constants.py`
+- Queries chosen to always return results (popular languages, well-known repos).

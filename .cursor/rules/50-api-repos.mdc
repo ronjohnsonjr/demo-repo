@@ -1,0 +1,26 @@
+---
+description: >
+  Repository endpoint patterns, test data, and conventions for /repos/* tests.
+alwaysApply: false
+---
+
+# Repository API Endpoints
+
+## Endpoints Covered
+- `GET /repos/{owner}/{repo}` — Get repository
+- `GET /orgs/{org}/repos` — List org repos
+- `GET /repos/{owner}/{repo}/branches` — List branches
+- `GET /repos/{owner}/{repo}/tags` — List tags
+- `GET /repos/{owner}/{repo}/contributors` — List contributors
+- `GET /repos/{owner}/{repo}/languages` — List languages
+- `GET /repos/{owner}/{repo}/readme` — Get README
+- `GET /repos/{owner}/{repo}/commits` — List commits
+
+## Test Data
+- Primary fixture: `octocat/Hello-World`
+- Popular repos for parameterized tests: linux, vscode, react, tensorflow
+- Constants in `data/repos_constants.py`
+
+## Test Files
+- `tests/repos/test_get_repo.py` — Single repo retrieval, schema, known values
+- `tests/repos/test_list_repos.py` — Listing, pagination, filtering

@@ -1,0 +1,17 @@
+---
+description: >
+  Organization endpoint patterns and conventions for /orgs/* tests.
+alwaysApply: false
+---
+
+# Organization API Endpoints
+
+## Endpoints Covered
+- `GET /orgs/{org}` — Get organization profile
+- `GET /orgs/{org}/members` — List members
+- `GET /orgs/{org}/repos` — List org repos
+
+## Test Data
+- Primary fixture: `github` (id: 9919)
+- Additional orgs: google, microsoft, facebook
+- Constants in `data/orgs_constants.py`

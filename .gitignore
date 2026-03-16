@@ -1,0 +1,44 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Test artifacts
+htmlcov/
+reports/
+logs/
+.pytest_cache/
+.coverage
+allure-results/
+
+# Config secrets
+config/config.json
+config/config.personal.json
+config/config.pool.auth
+config/config.pool.auth.lock
+config/ent_credentials.json
+config/ent_token.json
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Caches
+.mypy_cache/
+.ruff_cache/
+
+# Lock file (committed separately)
+# uv.lock

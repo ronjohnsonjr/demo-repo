@@ -1,0 +1,7 @@
+{
+    "engine": "sqlite",
+    "database": "data/test_results.db",
+    "echo": false,
+    "pool_size": 5,
+    "max_overflow": 10
+}

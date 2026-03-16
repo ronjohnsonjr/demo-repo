@@ -1,0 +1,25 @@
+---
+description: >
+  Logging conventions and configuration across the test framework.
+alwaysApply: false
+---
+
+# Logging Standards
+
+## Configuration
+- Logging is configured via `pyproject.toml` pytest settings.
+- Console logging: INFO level (`log_cli_level = "INFO"`)
+- File logging: DEBUG level to `logs/test_run.log`
+
+## Conventions
+- Use `logging.getLogger(__name__)` in every module.
+- Use `logger.info()` for test lifecycle events (start/end).
+- Use `logger.debug()` for HTTP request/response details.
+- Use `logger.warning()` for rate-limit events.
+- Use `logger.error()` for unexpected failures.
+- **Never** use `print()` — use the logger instead.
+
+## Autouse Fixture
+The `_log_test_boundaries` fixture (conftest.py) automatically logs:
+- `>>> START: test_name` at the beginning
+- `<<< END: test_name (Xs)` at completion with elapsed time

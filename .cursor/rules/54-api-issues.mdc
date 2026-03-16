@@ -1,0 +1,17 @@
+---
+description: >
+  Issue endpoint patterns and conventions for /issues/* tests.
+alwaysApply: false
+---
+
+# Issue API Endpoints
+
+## Endpoints Covered
+- `GET /repos/{owner}/{repo}/issues` — List repo issues
+- `GET /repos/{owner}/{repo}/issues/{number}` — Get single issue
+- `GET /repos/{owner}/{repo}/issues/{number}/comments` — List comments
+- `GET /repos/{owner}/{repo}/labels` — List labels
+
+## Test Data
+- Primary fixture: `octocat/Hello-World` issue #1
+- Constants in `data/issues_constants.py`

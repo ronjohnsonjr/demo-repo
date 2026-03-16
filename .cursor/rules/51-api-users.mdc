@@ -1,0 +1,20 @@
+---
+description: >
+  User endpoint patterns and conventions for /users/* tests.
+alwaysApply: false
+---
+
+# User API Endpoints
+
+## Endpoints Covered
+- `GET /users/{username}` — Get user profile
+- `GET /users/{username}/repos` — List user repos
+- `GET /users/{username}/followers` — List followers
+- `GET /users/{username}/following` — List following
+- `GET /users/{username}/gists` — List user gists
+- `GET /users/{username}/orgs` — List user orgs
+
+## Test Data
+- Primary fixture: `octocat` (id: 583231)
+- Additional users: torvalds, defunkt, mojombo
+- Constants in `data/users_constants.py`

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "make test",
+      "make lint",
+      "make format",
+      "make check"
+    ]
+  }
+}

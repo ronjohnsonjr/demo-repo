@@ -1,4 +1,4 @@
-"""Root conftest.py — shared fixtures for GitHub API test automation."""
+"""Root conftest.py -- shared fixtures for GitHub API test automation."""
 
 import json
 import logging
@@ -38,9 +38,9 @@ def github_token() -> str | None:
                 config = json.load(f)
             token = config.get("github_token")
     if token:
-        logger.info("GitHub token loaded — authenticated mode (5000 req/hr)")
+        logger.info("GitHub token loaded -- authenticated mode (5000 req/hr)")
     else:
-        logger.warning("No GitHub token found — unauthenticated mode (60 req/hr)")
+        logger.warning("No GitHub token found -- unauthenticated mode (60 req/hr)")
     return token
 
 
@@ -65,7 +65,7 @@ def http_client(github_token, rate_limiter) -> GitHubHTTPClient:
 
 @pytest.fixture(scope="session")
 def api(http_client) -> GitHubAPI:
-    """Session-scoped GitHub API wrapper — the primary interface for tests."""
+    """Session-scoped GitHub API wrapper -- the primary interface for tests."""
     return GitHubAPI(client=http_client)
 
 
@@ -108,5 +108,10 @@ def pytest_configure(config):
         "test_actions: Actions endpoint tests",
         "smoke: Quick smoke tests for CI",
         "slow: Tests that take longer to run",
+        "test_rate_limiting: Rate limiter unit tests",
+        "test_http: HTTP client unit tests",
+        "test_database: Database utility unit tests",
+        "test_testing: Testing helper and API unit tests",
+        "test_error_handling: Error handling tests for HTTP error codes",
     ]:
         config.addinivalue_line("markers", marker)

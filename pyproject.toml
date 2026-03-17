@@ -21,6 +21,11 @@ markers = [
     "test-actions: Actions endpoint tests",
     "smoke: Quick smoke tests for CI",
     "slow: Tests that take longer to run",
+    "test_rate_limiting: Rate limiter unit tests",
+    "test_http: HTTP client unit tests",
+    "test_database: Database utility unit tests",
+    "test_testing: Testing helper and API unit tests",
+    "test_error_handling: Error handling tests for HTTP error codes",
 ]
 addopts = [
     "-v",
